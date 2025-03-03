@@ -1,0 +1,42 @@
+plugins {
+    id "com.android.application"
+    id 'com.google.gms.google-services' 
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.example.flutter_application_1"
+    compileSdk = 34  // ✅ Set latest stable compile SDK version
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17" // ✅ Set JVM target to Java 17
+    }
+
+    defaultConfig {
+        applicationId = "com.example.flutter_application_1"
+        minSdkVersion 23  // ✅ Explicitly setting minSdkVersion
+        targetSdk = 34  // ✅ Explicitly setting targetSdkVersion
+        versionCode = 1
+        versionName = "1.0.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
+
+apply plugin: 'com.google.gms.google-services'  // ✅ Make sure this is at the bottom
